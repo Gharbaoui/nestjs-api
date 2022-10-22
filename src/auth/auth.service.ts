@@ -1,13 +1,14 @@
 import {Injectable } from "@nestjs/common";
 import {ConfigService} from "@nestjs/config"
+import { PrismaService } from "src/prisma/prisma.service";
 
 
 @Injectable({})
 export class AuthService {
-    constructor(private readonly configModule: ConfigService) {}
+    constructor(private readonly prismaService: PrismaService) {}
     login()
     {
-        return `login with ${this.configModule.get<string>('DB_USER')}`;
+        return `login`;
     }
 
 
