@@ -68,4 +68,9 @@ $ npm run test:cov
     <li>first step docker-compose up db -d</li>
     <li> connect: psql -h (ip) -p (port) -d (database-name) -U (username) --password </li>
   </ul>
+
+  <li> prisma: </li>
+  <ul>
+    <li>npx prisma migrate dev <label> this will automaticly creat typescript type of model and create tables in database </label> </li>
+  </ul>
 </ul>
