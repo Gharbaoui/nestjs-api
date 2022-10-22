@@ -63,4 +63,9 @@ $ npm run test:cov
   <ul>
     <li>npm i --save @nestjs/config</li>
   </ul>
+  <li> database info: </li>
+    <ul>
+    <li>first step docker-compose up db -d</li>
+    <li> connect: psql -h (ip) -p (port) -d (database-name) -U (username) --password </li>
+  </ul>
 </ul>

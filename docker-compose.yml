@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    ports:
+      - ${DB_PORT_EXPOSED}:${DB_PORT_REAL}
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    container_name: ${DB_CONT_NAME}
