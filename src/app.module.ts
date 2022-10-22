@@ -4,7 +4,9 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot(
+
+    ),
     AuthModule
   ],
   controllers: [],
