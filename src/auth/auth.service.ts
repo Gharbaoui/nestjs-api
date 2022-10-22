@@ -3,6 +3,7 @@ import {ConfigService} from "@nestjs/config"
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthDto } from "./dto";
 import * as argon from 'argon2';
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 
 @Injectable({})
 export class AuthService {
@@ -17,15 +18,21 @@ export class AuthService {
     {
         // genreate password
         // store it in db
-        const hash = await argon.hash(dto.password);
-        const user = await this.prismaService.user.create({
-            data: {
-                email: dto.email,
-                hash
+        try {
+            const hash = await argon.hash(dto.password);
+            const user = await this.prismaService.user.create({
+                data: {
+                    email: dto.email,
+                    hash
+                }
+            });
+            delete user.hash;
+            return user;
+        } catch (err) {
+            if (err instanceof PrismaClientKnownRequestError) {
+                return `this email is already in use!!`
             }
-        });
-        delete user.hash;
-        return user;
+        }
     }
 
 }
